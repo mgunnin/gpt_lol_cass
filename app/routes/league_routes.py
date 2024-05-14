@@ -22,10 +22,10 @@ async def get_db():
 async def get_summoner_league_entries(
     name: str, region: str, db: Session = Depends(get_db)
 ):
-    summoner = await get_summoner_by_name(name, region)
-    league_entries = await get_league_entries(summoner)
+    summoner = get_summoner_by_name(name, region)
+    league_entries = get_league_entries(summoner)
 
-    result = await db.execute(
+    result = db.execute(
         select(Summoner).filter(Summoner.summoner_id == summoner.id)
     )
     db_summoner = result.scalars().first()

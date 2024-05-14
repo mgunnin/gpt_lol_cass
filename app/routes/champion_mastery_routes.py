@@ -21,8 +21,8 @@ async def get_db():
 async def get_summoner_champion_masteries(
     name: str, region: str, db: Session = Depends(get_db)
 ):
-    summoner = await get_summoner_by_name(name, region)
-    masteries = await get_champion_masteries(summoner)
+    summoner = get_summoner_by_name(name, region)
+    masteries = get_champion_masteries(summoner)
 
     db_summoner = db.query(Summoner).filter(Summoner.id == summoner.id).first()
     if not db_summoner:

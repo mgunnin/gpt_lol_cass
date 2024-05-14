@@ -31,9 +31,9 @@ async def get_db():
 
 @router.get("/{name}/{region}")
 async def get_summoner(name: str, region: str, db: Session = Depends(get_db)):
-    summoner = await get_summoner_by_name(name, region)
+    summoner = get_summoner_by_name(name, region)
 
-    cached_summoner = await get_summoner_from_cache(summoner.account_id)
+    cached_summoner = get_summoner_from_cache(summoner.account_id)
     if cached_summoner:
         return cached_summoner
 

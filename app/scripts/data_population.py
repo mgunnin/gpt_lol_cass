@@ -2,12 +2,8 @@ import asyncio
 
 from cassiopeia import Queue, Summoner
 
-from app.api.riot import (
-    get_champion_masteries,
-    get_league_entries,
-    get_match,
-    get_summoner_by_name,
-)
+from app.api.riot import (get_champion_masteries, get_league_entries,
+                          get_match, get_summoner_by_name)
 from app.db.database import AsyncSessionLocal
 from app.models.champion_mastery import ChampionMastery
 from app.models.league import League

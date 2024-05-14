@@ -18,7 +18,7 @@ async def get_db():
 
 @router.get("/{match_id}/{region}")
 async def get_match_details(match_id: int, region: str, db: Session = Depends(get_db)):
-    match = await get_match(match_id, region)
+    match = get_match(match_id, region)
     db_match = Match(
         match_id=match.id,
         region=region,

@@ -20,7 +20,7 @@ async def get_db():
 async def get_match_participants(
     match_id: str, region: str, db: Session = Depends(get_db)
 ):
-    match = await get_match(int(match_id), region)
+    match = get_match(int(match_id), region)
     db_participants = []
     for participant in match.participants:
         db_participant = MatchParticipant(
